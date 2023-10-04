@@ -117,7 +117,7 @@ class Student {
   }
 
 
-  setGrade(subject: string, grade: number) {
+  setGrade(subject: string, grade: number): void {
     this.grades[subject] = grade;
   }
 
