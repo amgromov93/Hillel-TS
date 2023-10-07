@@ -191,15 +191,15 @@ class Student {
     this._birthYear = birthYear;
   }
 
-  get fullName() {
+  get fullName(): string {
     return `${this._lastName} ${this._firstName}`;
   }
 
-  set fullName(value) {
+  set fullName(value: string) {
     [this._lastName, this._firstName] = value.split(" ");
   }
 
-  get age() {
+  get age(): number {
     return new Date().getFullYear() - this._birthYear;
   }
 
