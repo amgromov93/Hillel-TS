@@ -1,8 +1,8 @@
 {
-  "name": "lesson-2",
+  "name": "lesson-3",
   "version": "1.0.0",
   "description": "",
-  "main": "lesson-2.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
