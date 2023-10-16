@@ -2,17 +2,36 @@ interface IFigureWithPrintMethod {
   print(): void;
 }
 
+interface ICircle {
+  radius: number
+}
+
+interface IRectangle extends IFigureWithPrintMethod {
+  width: number,
+  height: number
+}
+
+interface ISquare extends IFigureWithPrintMethod {
+  x: number
+}
+
+interface ITriangle {
+  x: number,
+  y: number, 
+  z: number
+}
+
 abstract class Figure {
-  protected abstract color: string;
-  protected abstract name: string;
+  abstract color: string;
+  abstract name: string;
   abstract calculateArea(): void;
 }
 
-class Circle extends Figure {
+class Circle extends Figure implements ICircle{
   constructor(
     public radius: number,
-    protected color: string,
-    protected name: string
+    public readonly color: string,
+    public readonly name: string
   ) {
     super();
   }
@@ -23,33 +42,33 @@ class Circle extends Figure {
   }
 }
 
-class Rectangle extends Figure implements IFigureWithPrintMethod {
+class Rectangle extends Figure implements IRectangle {
   constructor(
-    public x: number,
-    public y: number,
-    protected color: string,
-    protected name: string
+    public width: number,
+    public height: number,
+    public readonly color: string,
+    public readonly name: string
   ) {
     super();
   }
 
   calculateArea(): void {
-    const rectangleArea = this.x * this.y;
+    const rectangleArea = this.width * this.height;
     console.log("area of Rectangle is", rectangleArea);
   }
 
   print(): void {
     console.log(
-      `Area of rectangle = one side ${this.x} * perpendicular second side ${this.y}`
+      `Area of rectangle = one side ${this.width} * perpendicular second side ${this.height}`
     );
   }
 }
 
-class Square extends Figure implements IFigureWithPrintMethod {
+class Square extends Figure implements ISquare {
   constructor(
     public x: number,
-    protected color: string,
-    protected name: string
+    public readonly color: string,
+    public readonly name: string
   ) {
     super();
   }
@@ -64,13 +83,13 @@ class Square extends Figure implements IFigureWithPrintMethod {
   }
 }
 
-class Triangle extends Figure {
+class Triangle extends Figure implements ITriangle {
   constructor(
     public x: number,
     public y: number,
     public z: number,
-    protected color: string,
-    protected name: string
+    public readonly color: string,
+    public readonly name: string
   ) {
     super();
   }
